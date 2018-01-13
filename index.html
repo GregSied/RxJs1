@@ -6,86 +6,45 @@
 <h1>Rxjs</h1>
 <script>
 
-    // zeby sprawdzic funkcje
 
-    // reduce -> zredukowac tablice do jednego elementu
-    const tab = [1, 2, 3, 4, 5];
+    const t2 = [
+        {name: 'Pawel', age: 32},
+        {name: 'Karol', age: 17},
+        {name: 'Tomek', age: 67},
+        {name: 'Kasia', age: 12},
+        {name: 'Ania', age: 4},
+        {name: 'Roman', age: 2},
+    ]
 
-    const tab8 = tab.filter((element)=>element >3)
+    // >18
 
-    const tab9 = tab.sort( (element1, element2) => element2 > element1 ? 1:-1);
-    // operator warunkowy >
-    // calosc to warunek
-    // element2 - element1 ujemny nie zamienia, dodatni zamienia rekurencyjny quick sort nie jest najbardzej optymwalna
-
-    join('f') // f laczy wszystkie
-
-
-    i = 0;
-    const tab7 = tab.reduce((accumulator, currentValue) => {
-//        return accumulator+1;
-        console.log('aku',accumulator);
-        console.log('cur',currentValue);
-        return accumulator + currentValue;
-    })
+    const t3 = t2.filter((element) => element.age >= 18);
 
 
+    const t4 = t2.filter((element) => element.age < 18).map(e => e.name);
 
+    /*
 
-    const tab2 = tab.reverse()
-    //    tab.sort()
-    for (let i = 0; i < tab.size; i++) {
-        tab[i] = tab[i] * 10
-    }
-    // funkcja map pozwala mapowac dowolna tablice na nowa
-    const tab3 = tab.map(function (element, index, tab) {
-        return element * 10
-    })
-    // arrow functions podobna do funkcji anonimowej () => {} czasami fat arrow funct
-//    const tab4 = tab.map((element, index, tab) = > {
-//        return element * 10;
-//    })
-//    ;
+        // zmnic preference na js v6
+        //  const t = [[1, 2, 3], [1, 2, 3], [1, 2, 3]];
+        const tt = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        // 1. iterujemy po tablicy glownej zeby dostac sie do elementu
+        // 2. elementy sa tablicamy wiec je odwracamy funckja reverse
 
-//    const tab5 = tab.map(element = > element * 10
-//    )
-//
-//    const tab6 = tab.map(e = > e * 10
-//    )
-//
+        const tt1 = tt.map(e = > e.reverse()
+        )
 
+        const tt2 = tt.map(e = > e.reverse()
+        ).join('-')
+        const tt3 = tt.map(e = > e.reverse().join('-')
+        ).join('-')
 
-    //// {} cali braces
-    //(parametry) => {
-    //    // cailo funkcji
-    //}
-    //// jesli jeden parametr
-    //paramet => {
-    //    //cialo
-    //}
-    //
-    //parametr => true;
-    //
-    //
-    //() => true;
-    //
+        const tt4 = tt.map(e = > e.reverse().join('-')
+        ).join('-')
 
-    //    tab.push(6)
-    //    tab =  [1, 2 ]
-    // var - zasieg funkcyjny mozna redeklarowac i jest hoistingowany
-    // let/const - zasieg blokoway, nie mozna redeklarowac
-    // typy zlozone sa przezkazywane przez referencje np. Array, Object
+        //    .split(',').join()
+    */
 
-    //    for (let i = 0; i<5 ; i++){
-    //        setTimeout(function(){
-    //            console.log(i)
-    //        },100)
-    //}
-    //
-    //var zm = 1;
-    //var zm = 2;
-
-    //    const str ="text";
 
 </script>
 </body>
