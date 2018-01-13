@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
     entry: "./main",
     output: {
         filename: "app.js"
@@ -7,7 +7,7 @@ module.exports={
         loaders: [
             {
                 test: /.ts$/,
-                loader: "test-loader"
+                loader: "ts-loader"
             }
         ]
     },

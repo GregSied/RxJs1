@@ -1,28 +1,21 @@
 {
-  "name": "rxjs1",
+  "name": "rxjs-projekt",
   "version": "1.0.0",
-  "description": "MasteringRxJs",
+  "description": "Mastering rxJS",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "temporary": "node main.js",
-    "start": "webpack-dev-server --watch --inline"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GregSied/RxJs1.git"
+    "start": "webpack-dev-server --watch --inline",
+    "postinstall": "typings install"
   },
   "keywords": [
     "rxjs"
   ],
-  "author": "GregSied",
+  "author": "Pawel Konior",
   "license": "Beerware",
-  "bugs": {
-    "url": "https://github.com/GregSied/RxJs1/issues"
-  },
-  "homepage": "https://github.com/GregSied/RxJs1#readme",
   "dependencies": {
-    "rxjs": "^5.5.6"
+    "rxjs-es": "^5.0.0-beta.12"
   },
   "devDependencies": {
     "ts-loader": "^0.8.2",
