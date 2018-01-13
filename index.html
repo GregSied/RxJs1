@@ -8,7 +8,19 @@
 
     // zeby sprawdzic funkcje
 
+    // reduce -> zredukowac tablice do jednego elementu
     const tab = [1, 2, 3, 4, 5];
+
+    const tab8 = tab.filter((element)=>element >3)
+
+    const tab9 = tab.sort( (element1, element2) => element2 > element1 ? 1:-1);
+    // operator warunkowy >
+    // calosc to warunek
+    // element2 - element1 ujemny nie zamienia, dodatni zamienia rekurencyjny quick sort nie jest najbardzej optymwalna
+
+    join('f') // f laczy wszystkie
+
+
     i = 0;
     const tab7 = tab.reduce((accumulator, currentValue) => {
 //        return accumulator+1;
