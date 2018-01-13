@@ -8,42 +8,63 @@
 
 
     const t2 = [
-        {name: 'Pawel', age: 32},
-        {name: 'Karol', age: 17},
-        {name: 'Tomek', age: 67},
-        {name: 'Kasia', age: 12},
-        {name: 'Ania', age: 4},
-        {name: 'Roman', age: 2},
-    ]
+        {
+            name: 'Pawel', age: 32, favorites: [
+            'rybki', 'programowanie', 'alkohol'
+        ]
+        },
+        {
+            name: 'Karol', age: 17, favorites: [
+            'matematyka', 'grzybki', 'alkohol'
+        ]
+        },
+        {
+            name: 'Tomek', age: 67, favorites: [
+            'filmy', 'napady', 'narkotyki'
+        ]
+        },
+        {
+            name: 'Kasia', age: 12, favorites: [
+            'koty', 'gry', 'alkohol'
+        ]
+        },
+        {
+            name: 'Ania', age: 4, favorites: [
+            'rybki', 'koty', 'wolnomularstwo'
+        ]
+        },
+        {
+            name: 'Roman', age: 2, favorites: [
+            'roboty', 'niespanie', 'prace'
+        ]
+        },
+    ];
 
-    // >18
+    // tablica imoin co pija alko
+    // 1. iterowanie po wszystkich obiektach map()
+    // 2. wejsc do favorites a) po kluczu b) czy element jest tablica
+    // 3. przefiltrowac tablice w poszukiwaniu alko
+    // 4. jezeli zawiera to zwrocic imie
 
-    const t3 = t2.filter((element) => element.age >= 18);
+    // nie filter tylko map
+    const t4 = t2.map(function(e){
+        let temp = e.favorites.filter(function(element){
+            return element === 'alkohol';
+        });
+        return temp.length > 0 ? e.name : -1;
+    }).filter(function(e){
+        return e !== -1;
+    })
 
+    const t5 = t2.map(e => {
+        let temp = e.favorites.filter(e => e === 'alkohol');
+        return temp.length > 0 ? e.name : -1;
+    }).filter(e => e !== -1);
 
-    const t4 = t2.filter((element) => element.age < 18).map(e => e.name);
-
-    /*
-
-        // zmnic preference na js v6
-        //  const t = [[1, 2, 3], [1, 2, 3], [1, 2, 3]];
-        const tt = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-        // 1. iterujemy po tablicy glownej zeby dostac sie do elementu
-        // 2. elementy sa tablicamy wiec je odwracamy funckja reverse
-
-        const tt1 = tt.map(e = > e.reverse()
-        )
-
-        const tt2 = tt.map(e = > e.reverse()
-        ).join('-')
-        const tt3 = tt.map(e = > e.reverse().join('-')
-        ).join('-')
-
-        const tt4 = tt.map(e = > e.reverse().join('-')
-        ).join('-')
-
-        //    .split(',').join()
-    */
+    const t6 = t2.map(e => {
+        let temp = e.favorites.filter(e => e === 'rybki');
+        return temp.length > 0 && e.age < 18 ? e.name : -1;
+    }).filter(e => e !== -1 );
 
 
 </script>
