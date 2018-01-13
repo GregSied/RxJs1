@@ -6,25 +6,61 @@
 <h1>Rxjs</h1>
 <script>
 
-// zeby sprawdzic funkcje
+    // zeby sprawdzic funkcje
 
-    const tab = [1, 2, 3, 4, 5];
-    tab.push(6)
-    tab =  [1, 2 ]
-// var - zasieg funkcyjny mozna redeklarowac i jest hoistingowany
-// let/const - zasieg blokoway, nie mozna redeklarowac
-// typy zlozone sa przezkazywane przez referencje np. Array, Object
+    const tab = [1, 2, 3, 4, 5]
+    const tab2 = tab.reverse()
+    //    tab.sort()
+    for (let i = 0; i < tab.size; i++) {
+        tab[i] = tab[i] * 10
+    }
+    // funkcja map pozwala mapowac dowolna tablice na nowa
+    const tab3 = tab.map(function (element, index, tab) {
+        return element * 10
+    })
+    // arrow functions podobna do funkcji anonimowej () => {} czasami fat arrow funct
+    const tab4 = tab.map((element, index, tab) => {
+        return element * 10;
+    })
+    ;
 
-//    for (let i = 0; i<5 ; i++){
-//        setTimeout(function(){
-//            console.log(i)
-//        },100)
-//}
-//
-//var zm = 1;
-//var zm = 2;
+    const tab5 = tab.map(element => element * 10)
 
-//    const str ="text";
+    const tab6 = tab.map(e => e * 10)
+
+
+
+    //// {} cali braces
+    //(parametry) => {
+    //    // cailo funkcji
+    //}
+    //// jesli jeden parametr
+    //paramet => {
+    //    //cialo
+    //}
+    //
+    //parametr => true;
+    //
+    //
+    //() => true;
+    //
+
+    //    tab.push(6)
+    //    tab =  [1, 2 ]
+    // var - zasieg funkcyjny mozna redeklarowac i jest hoistingowany
+    // let/const - zasieg blokoway, nie mozna redeklarowac
+    // typy zlozone sa przezkazywane przez referencje np. Array, Object
+
+    //    for (let i = 0; i<5 ; i++){
+    //        setTimeout(function(){
+    //            console.log(i)
+    //        },100)
+    //}
+    //
+    //var zm = 1;
+    //var zm = 2;
+
+    //    const str ="text";
 
 </script>
 </body>
