@@ -8,7 +8,18 @@
 
     // zeby sprawdzic funkcje
 
-    const tab = [1, 2, 3, 4, 5]
+    const tab = [1, 2, 3, 4, 5];
+    i = 0;
+    const tab7 = tab.reduce((accumulator, currentValue) => {
+//        return accumulator+1;
+        console.log('aku',accumulator);
+        console.log('cur',currentValue);
+        return accumulator + currentValue;
+    })
+
+
+
+
     const tab2 = tab.reverse()
     //    tab.sort()
     for (let i = 0; i < tab.size; i++) {
@@ -19,15 +30,17 @@
         return element * 10
     })
     // arrow functions podobna do funkcji anonimowej () => {} czasami fat arrow funct
-    const tab4 = tab.map((element, index, tab) => {
-        return element * 10;
-    })
-    ;
+//    const tab4 = tab.map((element, index, tab) = > {
+//        return element * 10;
+//    })
+//    ;
 
-    const tab5 = tab.map(element => element * 10)
-
-    const tab6 = tab.map(e => e * 10)
-
+//    const tab5 = tab.map(element = > element * 10
+//    )
+//
+//    const tab6 = tab.map(e = > e * 10
+//    )
+//
 
 
     //// {} cali braces
