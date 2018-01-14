@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 // import "rxjs/add/operator/map";
 // import "rxjs/add/operator/filter";
 
-let numbers = [1, 5, 5, 6, 7, 8,9, 10];
+let numbers = [1, 5, 50, 30, 7, 8,9, 10];
 let source = Observable.create(observer => {
 
     let index = 0;
@@ -22,11 +22,13 @@ let source = Observable.create(observer => {
     produceValue();
 
 }).map(n => n * 2)
-    .filter(n => n > 4);
+    .map(n => n < 18 ? `mlody: ${n}` : `stary: ${n}`);
+    // .filter(n => n > 1);
 
+// *3 czy mniejsze od 18tu
 
 source.subscribe(
-    value => console.log(`value: ${value}`),
+    value => console.log(`val: ${value}`),
     e => console.log(`error: ${e}`),
     () => console.log("complete")
 );
