@@ -1,34 +1,39 @@
 import {Observable} from "rxjs";
 
-// import {Observable} from "rxjs/Observable";
-// import "rxjs/add/operator/map";
-// import "rxjs/add/operator/filter";
+//by element id moze
 
-let numbers = [1, 5, 50, 30, 7, 8,9, 10];
-let source = Observable.create(observer => {
+const button = document.querySelector('button');
+const output = document.querySelector('#output');
 
-    let index = 0;
-    let produceValue = () => {
-        observer.next(numbers[index++]);
+let click = Observable.fromEvent(button, 'click');
 
-        if(index < numbers.length) {
-            setTimeout(produceValue, 1250);
-        }
-        else {
-            observer.complete();
-        }
-    }
+function load(url: string) {
 
-    produceValue();
+    return Observable.create(observer => {
 
-}).map(n => n * 2)
-    .map(n => n < 18 ? `mlody: ${n}` : `stary: ${n}`);
-    // .filter(n => n > 1);
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener("load", () => {
+            if (xhr.status == 200) {
+                let data = JSON.parse(xhr.responseText);
+                observer.next(data);
+                observer.complete();
 
-// *3 czy mniejsze od 18tu
+                console.log(data);
+                console.table(data);
+            } else {
+                observer.error(xhr.statusText);
+            }
+        });
+        xhr.open("GET", url);
+        xhr.send();
+    })
+}
 
-source.subscribe(
-    value => console.log(`val: ${value}`),
-    e => console.log(`error: ${e}`),
-    () => console.log("complete")
-);
+// load("/books-api.json");
+
+click.flatMap(e => load("/books-api.json"))
+    .subscribe(
+        (e) => console.log(e),
+        (e) => console.log(`error: ${e}`),
+            () => console.log('done')
+    );
