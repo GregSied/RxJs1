@@ -1,56 +1,36 @@
-import {Observable} from "rxjs-es";
+import { Observable } from "rxjs";
 
-console.log("Sta");
-
-const labirynt = [0, 0, [[0, [0, 0, [[0, [0, 0, [0, 0, [[[0, 0, 0, [0, 1, 0]], 0], 0]]], 0], 0], 0, 0], 0], 0, 0]];
-
-let count = 0;
-
-function cE (tab){
-    tab.map(e=> {
-        if (e instanceof Array){
-            cE(e)
-        } else {
-            count++
+let numbers = [1, 5, 10, 12, 30, 50, 99];
+let source = Observable.create(observer =>{
+    let index =0;
+    let produceValue = () =>{
+        observer.next(numbers[index++]);
+        if(index<numbers.length){
+            setTimeout(produceValue, 1250)
+        }else {
+            observer.complete();
         }
-            // if Array.isArray(e)
+    };
+    produceValue();
+});
+source.subscribe(
+    value => console.log(`moja wartość to: ${value}`),
+    e=>console.log(`error: ${e}`),
+    ()=> console.log(`skonczyl sie stream`)
+);
+
+const labirynt = [0,0,[[0,[0,0,[[0,[0,0,[0,0,[[[0,0,0,[0,1,0]],0],0]]],0],0],0,0],0],0,0]];
+
+let counter = 0;
+
+function countElements(tab){
+    tab.map(e=>{
+        if(e instanceof Array){
+            countElements(e);
+        }else{
+            counter++;
+        }
     })
 }
 
-cE(labirynt);
-console.log(count)
-
-/*
-labirynt.map(e => {
-    if (e.toString() != null) {
-        let wyn = e.toString();
-        console.log(`jest: {wyn}`)
-    } else {
-        console.log("nie: {wyn}")
-    }
-})
-*/
-
-console.log(`lab: {labirynt}`)
-
-/*
-
-var source = Observable.create( observer => {
-    // let index = 0;
-    let produceValue = () => {
-        // observer.next(numbers[index++])
-        if (index < numbers.length) {
-            setTimeout(produceValue, 250);
-        } else {
-            observer.complete();
-        }
-    }
-});
-*/
-
-/*
-source.subscribe(
-    value => console.log(`moja wartosc to: ${value}`),
-    e=> console.log(`error: ${e}`),
-    ()=>console.log(`skoczyl sie stream`)
-);*/
+console.log(countElements(labirynt));
