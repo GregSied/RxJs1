@@ -1,12 +1,42 @@
 import {Observable} from "rxjs-es";
 
-console.log("ad");
+console.log("Sta");
 
-let numbers = [1, 5, 10];
+const labirynt = [0, 0, [[0, [0, 0, [[0, [0, 0, [0, 0, [[[0, 0, 0, [0, 1, 0]], 0], 0]]], 0], 0], 0, 0], 0], 0, 0]];
+
+let count = 0;
+
+function cE (tab){
+    tab.map(e=> {
+        if (e instanceof Array){
+            cE(e)
+        } else {
+            count++
+        }
+            // if Array.isArray(e)
+    })
+}
+
+cE(labirynt);
+console.log(count)
+
+/*
+labirynt.map(e => {
+    if (e.toString() != null) {
+        let wyn = e.toString();
+        console.log(`jest: {wyn}`)
+    } else {
+        console.log("nie: {wyn}")
+    }
+})
+*/
+
+console.log(`lab: {labirynt}`)
+
+/*
 
 var source = Observable.create( observer => {
     // let index = 0;
-/*
     let produceValue = () => {
         // observer.next(numbers[index++])
         if (index < numbers.length) {
@@ -15,8 +45,8 @@ var source = Observable.create( observer => {
             observer.complete();
         }
     }
-*/
 });
+*/
 
 /*
 source.subscribe(
