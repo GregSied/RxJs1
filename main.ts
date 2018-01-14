@@ -24,26 +24,33 @@ function load(url: string) {
         });
         xhr.open("GET", url);
         xhr.send();
+    }).retryWhen((errors, limit = 5, delay = 1000) => {
+        return errors
+            .takeWhile((e, i) => {
+                console.log(i);
+                return i < limit
+            })
+            .delay(delay)
     })
-        .map((a) => a.sort((a,b) => a.pages > b.pages))
+    // .map((a) => a.sort((a,b) => a.pages > b.pages))
 }
 
 // load("/books-api.json");
 
-function renderBooks(books){
+function renderBooks(books) {
     books.forEach(b => {
         let node = document.createElement('div');
-        node.innerText="title: "+b.title+", pages:"+b.pages;
+        node.innerText = "title: " + b.title + ", pages:" + b.pages;
         output.appendChild(node);
     })
 }
 
-click.flatMap(e => load("/books-api.json"))
+click.flatMap(e => load("/booXks-api.json"))
     .subscribe(
         (e) => {
             console.log(e);
             renderBooks(e);
         },
-                (e) => console.log(`error: ${e}`),
-                () => console.log('done')
+        (e) => console.log(`error: ${e}`),
+        () => console.log('done')
     );
